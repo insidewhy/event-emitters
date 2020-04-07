@@ -1,7 +1,12 @@
 {
-  "extends": "./tsconfig.es5.json",
   "compilerOptions": {
-    "outDir": "../lib.es2015",
+    "declaration": true,
+    "strict": true,
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "preserveWatchOutput": true,
+    "outDir": "../dist.es2015",
     "target": "es2015"
   }
 }
