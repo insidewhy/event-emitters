@@ -1,6 +1,6 @@
 {
   "name": "event-emitters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "event emitters",
   "author": "insidewhy <github@chilon.net>",
   "license": "ISC",
@@ -14,16 +14,14 @@
     "emitters"
   ],
   "main": "dist.es5/index.js",
-  "module": "dist.es5m/index.js",
-  "es2015": "dist.es2015/index.js",
+  "module": "dist.es2015/index.js",
   "typings": "dist.es2015/index",
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "yarn build",
-    "build": "yarn build-modern && yarn build-es5 && yarn build-es5m",
+    "build": "yarn build-modern && yarn build-es5",
     "build-modern": "tsc -p src",
     "build-es5": "tsc -p src --target es5 --outDir dist.es5",
-    "build-es5m": "yarn build-es5 -m es2015 --outDir dist.es5m",
     "build-watch": "yarn build-es5 -w",
     "clean": "rimraf 'dist*'",
     "lint": "eslint 'src/*.ts'",
