@@ -32,7 +32,7 @@
     "test": "yarn jest",
     "watch": "yarn build-es5 && concurrently 'yarn build-watch' 'yarn jest-watch'",
     "validate": "yarn test && yarn lint && yarn validate-prettiness",
-    "jest-watch": "yarn jest --watch"
+    "jest-watch": "yarn jest --watchAll"
   },
   "devDependencies": {
     "@types/jest": "25.2.1",
