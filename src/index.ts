@@ -30,6 +30,10 @@ export class EventEmitter<T> {
     }
     this.listeners.splice(index, 1)
   }
+
+  hasListeners(): boolean {
+    return this.listeners.length !== 0
+  }
 }
 
 /**
