@@ -14,8 +14,8 @@
     "emitters"
   ],
   "main": "dist.es5/index.js",
-  "module": "dist.es2015/index.js",
-  "typings": "dist.es2015/index",
+  "module": "dist.es2016/index.js",
+  "typings": "dist.es2016/index",
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "yarn build",
