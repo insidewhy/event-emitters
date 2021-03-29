@@ -34,6 +34,33 @@ export class EventEmitter<T> {
   hasListeners(): boolean {
     return this.listeners.length !== 0
   }
+
+  [Symbol.asyncIterator](): AsyncIterator<T> {
+    return this.asyncIterator()
+  }
+
+  asyncIterator(): AsyncIterator<T> {
+    return new EventEmitterAsyncIterator<T>(this)
+  }
+}
+
+class EventEmitterAsyncIterator<T> implements AsyncIterator<T> {
+  constructor(private readonly eventEmitter: EventEmitter<T>) {}
+
+  next(): Promise<IteratorResult<T, undefined>> {
+    // TODO: keep getting values form event emitter
+    return Promise.resolve({ done: true, value: undefined })
+  }
+
+  return(): Promise<IteratorResult<T, undefined>> {
+    // TODO: unsubscribe
+    return Promise.resolve({ value: undefined, done: true })
+  }
+
+  throw(error: Error): Promise<IteratorResult<T, undefined>> {
+    // TODO: unsubscribe
+    return Promise.reject(error)
+  }
 }
 
 /**
