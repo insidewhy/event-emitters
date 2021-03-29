@@ -2,11 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "strict": true,
-    "lib": ["es2016", "dom"],
+    "lib": ["es2018", "dom"],
     "moduleResolution": "node",
     "sourceMap": true,
     "preserveWatchOutput": true,
-    "outDir": "../dist.es2016",
-    "target": "es2016"
+    "outDir": "../dist.es2018",
+    "target": "es2018"
   }
 }
