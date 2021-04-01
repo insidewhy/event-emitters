@@ -1,23 +1,11 @@
-import { EventEmitterWithCurrent } from './EventEmitterWithCurrent'
+import { EventEmitter } from './EventEmitter'
 
-describe('EventEmitterWithCurrent', () => {
+describe('EventEmitter', () => {
   /* eslint-disable @typescript-eslint/explicit-function-return-type */
-
-  const defaultVal = 'first'
-  const createEventEmitter = () => new EventEmitterWithCurrent<string>(defaultVal)
-
-  let emitter = createEventEmitter()
+  let emitter = new EventEmitter<string>()
 
   beforeEach(() => {
-    emitter = createEventEmitter()
-  })
-
-  it('sends current status when listener first subscribes', () => {
-    let current: string | undefined
-    emitter.subscribe((newVal: string) => {
-      current = newVal
-    })
-    expect(current).toEqual(defaultVal)
+    emitter = new EventEmitter<string>()
   })
 
   it('updates subscribed listener with statuses as they change', () => {
@@ -25,6 +13,7 @@ describe('EventEmitterWithCurrent', () => {
     emitter.subscribe((newVal: string) => {
       current = newVal
     })
+    expect(current).toEqual(undefined)
 
     const secondVal = 'second'
     emitter.emit(secondVal)
@@ -40,8 +29,8 @@ describe('EventEmitterWithCurrent', () => {
     emitter.subscribe((newVal: string) => {
       current2 = newVal
     })
-    expect(current1).toEqual(defaultVal)
-    expect(current2).toEqual(defaultVal)
+    expect(current1).toEqual(undefined)
+    expect(current2).toEqual(undefined)
 
     const secondVal = 'second'
     emitter.emit(secondVal)
@@ -60,8 +49,8 @@ describe('EventEmitterWithCurrent', () => {
       current1 = newVal
     })
     emitter.subscribe(secondListener)
-    expect(current1).toEqual(defaultVal)
-    expect(current2).toEqual(defaultVal)
+    expect(current1).toEqual(undefined)
+    expect(current2).toEqual(undefined)
 
     const secondVal = 'second'
     emitter.emit(secondVal)
@@ -73,5 +62,25 @@ describe('EventEmitterWithCurrent', () => {
     emitter.emit(thirdVal)
     expect(current1).toEqual(thirdVal)
     expect(current2).toEqual(secondVal)
+  })
+
+  it('throws an error when trying to subscribe the same listener twice', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const listener = () => {}
+    emitter.subscribe(listener)
+    expect(() => {
+      emitter.subscribe(listener)
+    }).toThrow()
+  })
+
+  it('throws an error when trying to unsubscribe a listener that is not listening', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const listener1 = () => {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const listener2 = () => {}
+    emitter.subscribe(listener1)
+    expect(() => {
+      emitter.unsubscribe(listener2)
+    }).toThrow()
   })
 })
