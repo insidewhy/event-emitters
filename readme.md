@@ -68,7 +68,7 @@ The above will log:
 43
 ```
 
-```
+```typescript
 const emitter = new EventEmitter<number>()
 const listener = emitter.subscribe(val => { console.log(val) })
 emitter.unsubscribe(listener)
