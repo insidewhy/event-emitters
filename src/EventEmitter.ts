@@ -8,7 +8,7 @@ import { EventSource, Listener } from './EventSource'
  * Throw an exception when a client registers the same listener more than once.
  * Throw an exception when a client tries to remove a listener that is not listening.
  */
-export class EventEmitter<T> implements EventSink<T>, EventSource<T> {
+export class EventEmitter<T> implements EventSink<T>, EventSource<T>, AsyncIterable<T> {
   protected listeners: Listener<T>[] = []
 
   emit(newMessage: T): void {
