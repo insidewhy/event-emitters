@@ -68,6 +68,14 @@ The above will log:
 43
 ```
 
+```
+const emitter = new EventEmitter<number>()
+const listener = emitter.subscribe(val => { console.log(val) })
+emitter.unsubscribe(listener)
+```
+
+`subscribe` returns the callback passed to it which can be useful for unsubscribing later.
+
 ## EventEmitterWithCurrent&lt;T&gt;
 
 Provides the same API as EventEmitter but:
