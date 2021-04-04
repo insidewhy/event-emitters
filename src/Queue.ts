@@ -54,4 +54,9 @@ export class Queue<T> {
     this.headIndex = (this.headIndex + 1) % this.buffer.length
     return item
   }
+
+  // clear the buffer and leave a corrupt useless buggy object remaining
+  destroy(): void {
+    this.buffer.length = 0
+  }
 }

@@ -13,6 +13,7 @@ Similar to node's EventEmitter but:
 - Only emits a single event of type `T`.
 - Throw an exception when a client registers the same listener more than once.
 - Throw an exception when a client tries to remove a listener that is not listening.
+- Support async iteration.
 
 ```typescript
 const emitter = new EventEmitter<number>()
@@ -43,6 +44,28 @@ The above will log:
 42
 same listener
 listener not found
+```
+
+```typescript
+const emitter = new EventEmitter<number>()
+
+async function logEmitterValues(emitter: EventEmitter<number>) {
+  for await (const val of emitter) {
+    console.log(val)
+  }
+}
+
+logEmitterValues(emitter)
+
+emitter.emit(42)
+emitter.emit(43)
+```
+
+The above will log:
+
+```
+42
+43
 ```
 
 ## EventEmitterWithCurrent&lt;T&gt;
