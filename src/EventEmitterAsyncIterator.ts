@@ -1,7 +1,13 @@
 import { EventSource, Listener } from './EventSource'
 import { Queue } from './Queue'
 
-export class EventEmitterAsyncIterator<T> implements AsyncIterator<T> {
+/**
+ * An async iterator implemented with an efficient queue.
+ *
+ * Make the async iterator also fulfil AsyncIterable, which is pretty pointless
+ * but needed to support certain APIs that are not implemented correctly.
+ */
+export class EventEmitterAsyncIterator<T> implements AsyncIterator<T>, AsyncIterable<T> {
   private readonly emitted: Queue<T> = new Queue<T>()
   // this will only contain listeners when `emitted` is empty
   private readonly pendingListens = new Queue<Listener<IteratorResult<T, undefined>>>()
@@ -41,5 +47,10 @@ export class EventEmitterAsyncIterator<T> implements AsyncIterator<T> {
     this.emitted.destroy()
     this.pendingListens.destroy()
     return Promise.reject(error)
+  }
+
+  // *sigh*
+  [Symbol.asyncIterator](): AsyncIterator<T> {
+    return this
   }
 }
