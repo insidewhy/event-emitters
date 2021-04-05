@@ -70,7 +70,9 @@ The above will log:
 
 ```typescript
 const emitter = new EventEmitter<number>()
-const listener = emitter.subscribe(val => { console.log(val) })
+const listener = emitter.subscribe((val: number) => {
+  console.log(val)
+})
 emitter.unsubscribe(listener)
 ```
 
