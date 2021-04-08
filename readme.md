@@ -100,6 +100,27 @@ The above will log:
 43
 ```
 
+## EventEmitterWithOptionalCurrent&lt;T&gt;
+
+Provides the same API as EventEmitterWithCurrent but:
+
+- Can optionally be initialized with the current message.
+- Emits the current message to each listener as soon as it subscribes only when the current message is available.
+
+```typescript
+const emitter = new EventEmitterWithCurrent<number>()
+emitter.subscribe((n: number): void => {
+  console.log(n)
+})
+emitter.emit(43)
+```
+
+The above will log:
+
+```
+43
+```
+
 ## QueueingEventEmitter&lt;T&gt;
 
 Provides the same API as EventEmitter but:
