@@ -5,3 +5,7 @@ export interface EventSource<T> {
 
   unsubscribe(listener: Listener<T>): void
 }
+
+export interface EventSourceWithCurrent<T> extends EventSource<T> {
+  currentMessage: T
+}
