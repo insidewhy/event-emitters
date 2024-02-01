@@ -35,7 +35,7 @@
     "jest-watch": "yarn jest --watchAll"
   },
   "devDependencies": {
-    "@types/jest": "26.0.22",
+    "@types/jest": "29.5.12",
     "@types/node": "14.14.37",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
@@ -43,7 +43,7 @@
     "eslint": "7.23.0",
     "eslint-config-prettier": "8.1.0",
     "husky": "6.0.0",
-    "jest": "26.6.3",
+    "jest": "29.7.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "rimraf": "3.0.2",
