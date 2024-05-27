@@ -25,6 +25,7 @@ export class Queue<T> {
           // move elements before head after tail
           for (let i = 0; i < this.headIndex; ++i) {
             this.buffer[prevCapacity + i] = this.buffer[i]
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
             delete this.buffer[i]
           }
           this.tailIndex += prevCapacity
@@ -32,6 +33,7 @@ export class Queue<T> {
       } else {
         for (let i = this.tailIndex + 1; i < prevCapacity; ++i) {
           this.buffer[prevCapacity + i] = this.buffer[i]
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
           delete this.buffer[i]
         }
         this.headIndex += prevCapacity
@@ -50,6 +52,7 @@ export class Queue<T> {
     --this.length
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const item = this.buffer[this.headIndex]!
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.buffer[this.headIndex]
     this.headIndex = (this.headIndex + 1) % this.buffer.length
     return item

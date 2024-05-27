@@ -8,7 +8,8 @@ import { EventSourceWithCurrent, Listener } from './EventSource'
  */
 export class EventEmitterWithCurrent<T>
   extends EventEmitter<T>
-  implements EventSourceWithCurrent<T> {
+  implements EventSourceWithCurrent<T>
+{
   public currentMessage: T
 
   constructor(initialMessage: T) {

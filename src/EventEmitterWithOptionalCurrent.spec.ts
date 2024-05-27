@@ -1,8 +1,6 @@
 import { EventEmitterWithOptionalCurrent } from './EventEmitterWithOptionalCurrent'
 
 describe('EventEmitterWithOptionalCurrent', () => {
-  /* eslint-disable @typescript-eslint/explicit-function-return-type */
-
   it('sends current status when it was provided and listener first subscribes', () => {
     let current = 42
     const emitter = new EventEmitterWithOptionalCurrent<number>(1)
