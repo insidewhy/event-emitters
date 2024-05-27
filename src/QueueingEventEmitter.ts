@@ -24,7 +24,7 @@ export class QueueingEventEmitter<T> extends EventEmitter<T> {
   subscribe(listener: Listener<T>): Listener<T> {
     super.subscribe(listener)
     if (this.messageQueue.length) {
-      let error: Error | undefined
+      let error: unknown
       this.messageQueue.forEach((queuedMessage) => {
         try {
           super.emit(queuedMessage)

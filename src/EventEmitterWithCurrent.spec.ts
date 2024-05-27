@@ -1,8 +1,6 @@
 import { EventEmitterWithCurrent } from './EventEmitterWithCurrent'
 
 describe('EventEmitterWithCurrent', () => {
-  /* eslint-disable @typescript-eslint/explicit-function-return-type */
-
   const defaultVal = 1
   const createEventEmitter = () => new EventEmitterWithCurrent<number>(defaultVal)
 

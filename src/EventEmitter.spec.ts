@@ -1,7 +1,6 @@
 import { EventEmitter } from './EventEmitter'
 
 describe('EventEmitter', () => {
-  /* eslint-disable @typescript-eslint/explicit-function-return-type */
   let emitter = new EventEmitter<number>()
 
   beforeEach(() => {
@@ -65,7 +64,6 @@ describe('EventEmitter', () => {
   })
 
   it('throws an error when trying to subscribe the same listener twice', () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const listener = () => {}
     emitter.subscribe(listener)
     expect(() => {
@@ -74,9 +72,7 @@ describe('EventEmitter', () => {
   })
 
   it('throws an error when trying to unsubscribe a listener that is not listening', () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const listener1 = () => {}
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const listener2 = () => {}
     emitter.subscribe(listener1)
     expect(() => {
