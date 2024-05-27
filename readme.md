@@ -137,7 +137,7 @@ emitter.subscribe((n: number): void => {
 })
 emitter.emit(46)
 emitter.subscribe((n: number): void => {
-  console.log("also", n)
+  console.log('also', n)
 })
 emitter.emit(47)
 ```
