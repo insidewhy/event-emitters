@@ -6,7 +6,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: cimg/node:20.12.1
+      - image: cimg/node:20.13.1
     working_directory: ~/repo
     steps:
       - checkout
