@@ -108,7 +108,7 @@ Provides the same API as EventEmitterWithCurrent but:
 - Emits the current message to each listener as soon as it subscribes only when the current message is available.
 
 ```typescript
-const emitter = new EventEmitterWithCurrent<number>()
+const emitter = new EventEmitterWithOptionalCurrent<number>()
 emitter.subscribe((n: number): void => {
   console.log(n)
 })
@@ -129,13 +129,17 @@ Provides the same API as EventEmitter but:
 - Delivers queued message to the first subscriber, then drains the queue.
 
 ```typescript
-const emitter = new EventEmitterWithCurrent<number>(42)
+const emitter = new QueueingEventEmitter<number>(42)
 emitter.emit(44)
 emitter.emit(45)
 emitter.subscribe((n: number): void => {
   console.log(n)
 })
 emitter.emit(46)
+emitter.subscribe((n: number): void => {
+  console.log("also", n)
+})
+emitter.emit(47)
 ```
 
 The above will log:
@@ -144,4 +148,6 @@ The above will log:
 44
 45
 46
+47
+also 47
 ```
