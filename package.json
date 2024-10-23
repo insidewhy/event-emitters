@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "29.5.12",
-    "@types/node": "20.12.12",
+    "@types/node": "20.17.0",
     "concurrently": "8.2.2",
     "eslint": "9.3.0",
     "eslint-config-prettier": "9.1.0",
