@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "29.5.12",
-    "@types/node": "20.12.12",
+    "@types/node": "22.20.2",
     "concurrently": "8.2.2",
     "eslint": "9.3.0",
     "eslint-config-prettier": "9.1.0",
@@ -50,7 +50,7 @@
     "typescript-eslint": "^7.10.0"
   },
   "volta": {
-    "node": "22.2.0",
+    "node": "22.23.2",
     "yarn": "1.22.22"
   }
 }
